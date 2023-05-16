@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26730.3
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33627.172
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Applications", "Applications", "{B13128D8-A4F3-4C53-A4C6-F2EA34F527BD}"
 EndProject
@@ -12,6 +12,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LuaInterface", "Core\LuaInterface\LuaInterface.csproj", "{8546E2B4-2394-4435-AADC-5FF7ED7AE47E}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LuaRunner", "Applications\LuaRunner\LuaRunner.csproj", "{088416A8-EFFF-413A-8579-088D054EBC1C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LuaObfuscator", "Applications\LuaObfuscator\LuaObfuscator.csproj", "{A4ED3CE1-30A9-4B32-A2F4-43F7190C51F8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,6 +33,10 @@ Global
 		{088416A8-EFFF-413A-8579-088D054EBC1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{088416A8-EFFF-413A-8579-088D054EBC1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{088416A8-EFFF-413A-8579-088D054EBC1C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A4ED3CE1-30A9-4B32-A2F4-43F7190C51F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A4ED3CE1-30A9-4B32-A2F4-43F7190C51F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A4ED3CE1-30A9-4B32-A2F4-43F7190C51F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A4ED3CE1-30A9-4B32-A2F4-43F7190C51F8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -39,6 +45,7 @@ Global
 		{4685AD89-1DC1-49CD-9026-A447C97D7D1C} = {B8664957-CB71-4F11-A4DB-59E7514BC5F3}
 		{8546E2B4-2394-4435-AADC-5FF7ED7AE47E} = {B8664957-CB71-4F11-A4DB-59E7514BC5F3}
 		{088416A8-EFFF-413A-8579-088D054EBC1C} = {B13128D8-A4F3-4C53-A4C6-F2EA34F527BD}
+		{A4ED3CE1-30A9-4B32-A2F4-43F7190C51F8} = {B13128D8-A4F3-4C53-A4C6-F2EA34F527BD}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6CF0E425-DA66-4ABF-8682-2EB10C5A49AF}

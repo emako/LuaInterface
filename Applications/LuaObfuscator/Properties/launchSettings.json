@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "LuaObfuscator": {
+      "commandName": "Project",
+      "commandLineArgs": "C:\\Users\\user1\\Desktop\\test\\obftest"
+    }
+  }
+}
