@@ -117,7 +117,7 @@ public static class LuaObfuscator
             }
 
             var lines = File.ReadAllLines(entry);
-            var newLines = lines.Where(line => !string.IsNullOrEmpty(line) && !line.StartsWith("--")).ToList();
+            var newLines = lines.Where(line => line != null && !string.IsNullOrWhiteSpace(line) && !line.Trim().StartsWith("--")).ToList();
             var newCode = string.Join("\n", newLines.ToArray());
 
             luaState["codeTable"] = newCode;
