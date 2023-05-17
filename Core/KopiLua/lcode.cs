@@ -5,17 +5,15 @@
 */
 
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Diagnostics;
 
 namespace KopiLua
 {
-	using TValue = Lua.lua_TValue;
-	using lua_Number = System.Double;
-	using Instruction = System.UInt32;
+    using Instruction = System.UInt32;
+    using lua_Number = System.Double;
+    using TValue = Lua.lua_TValue;
 
-	public class InstructionPtr
+    public class InstructionPtr
 	{
 		[CLSCompliantAttribute(false)]
 		public Instruction[] codes;

@@ -7,10 +7,32 @@
     <Nullable>enable</Nullable>
     <LangVersion>11.0</LangVersion>
     <StartupObject>LuaObfuscator.LuaObfuscator</StartupObject>
+    <ApplicationIcon>Favicon.ico</ApplicationIcon>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="Favicon.ico" />
+  </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\Core\LuaInterface\LuaInterface.csproj" />
   </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Costura.Fody" Version="5.7.0" Condition=" '$(Configuration)' == 'Release'">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>compile; runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DefineConstants>DEBUG</DefineConstants>
+    <OutputPath>..\..\Run\Release\</OutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DefineConstants></DefineConstants>
+    <OutputPath>..\..\Run\Release\</OutputPath>
+  </PropertyGroup>
 
 </Project>

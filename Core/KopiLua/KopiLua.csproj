@@ -7,7 +7,14 @@
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DefineConstants>TRACE;DEBUG;NETSTANDARD2_0;LUA_CORE;_WIN32;LUA_COMPAT_VARARG;LUA_COMPAT_MOD;LUA_COMPAT_GFIND;CATCH_EXCEPTIONS</DefineConstants>
-    <OutputPath>..\..\Run\Debug\netstandard2.0\</OutputPath>
+    <OutputPath>..\..\Run\Debug\</OutputPath>
+    <NoWarn>1701;1702;3014;3021;3002;3001;3003;</NoWarn>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DefineConstants>NETSTANDARD2_0;LUA_CORE;_WIN32;LUA_COMPAT_VARARG;LUA_COMPAT_MOD;LUA_COMPAT_GFIND;CATCH_EXCEPTIONS</DefineConstants>
+    <OutputPath>..\..\Run\Release\</OutputPath>
+    <NoWarn>1701;1702;3014;3021;3002;3001;3003;</NoWarn>
   </PropertyGroup>
 
 </Project>

@@ -1,5 +1,6 @@
 ﻿using LuaInterface;
-using System.Text;
+using static System.Runtime.CompilerServices.RuntimeHelpers;
+using System.Text.RegularExpressions;
 
 namespace LuaObfuscator;
 
@@ -26,18 +27,6 @@ public static class LuaObfuscator
         }
     }
 
-    public static string EncryptCode(string code)
-    {
-        StringBuilder encryptedCode = new();
-        foreach (char c in code)
-        {
-            int charCode = (int)c;
-            charCode += 1;
-            encryptedCode.Append($"\"{charCode}\",");
-        }
-        return encryptedCode.ToString();
-    }
-
     public static void ObfuscateFiles(string directoryPath)
     {
         originalDir = directoryPath;
@@ -61,30 +50,9 @@ public static class LuaObfuscator
         TryExit();
     }
 
-    public static IEnumerable<string> EnumerateFileSystemEntries(string directoryPath)
-    {
-        var files = Directory.GetFiles(directoryPath);
-        var directories = Directory.GetDirectories(directoryPath);
-
-        foreach (var file in files)
-        {
-            yield return file;
-        }
-
-        foreach (var directory in directories)
-        {
-            yield return directory;
-
-            foreach (var entry in EnumerateFileSystemEntries(directory))
-            {
-                yield return entry;
-            }
-        }
-    }
-
     private static void CountFiles(string directoryPath)
     {
-        foreach (var entry in EnumerateFileSystemEntries(directoryPath))
+        foreach (var entry in Directory.EnumerateFileSystemEntries(directoryPath))
         {
             if (Directory.Exists(entry))
             {
@@ -103,7 +71,7 @@ public static class LuaObfuscator
 
     private static void FileLoop(string directoryPath)
     {
-        foreach (var entry in EnumerateFileSystemEntries(directoryPath))
+        foreach (var entry in Directory.EnumerateFileSystemEntries(directoryPath))
         {
             if (Directory.Exists(entry))
             {
@@ -117,8 +85,8 @@ public static class LuaObfuscator
             }
 
             var lines = File.ReadAllLines(entry);
-            var newLines = lines.Where(line => line != null && !string.IsNullOrWhiteSpace(line) && !line.Trim().StartsWith("--")).ToList();
-            var newCode = string.Join("\n", newLines.ToArray());
+            var newLines = lines.Where(line => !string.IsNullOrWhiteSpace(line)).ToList();
+            var newCode = string.Join(" ", newLines.ToArray());
 
             luaState["codeTable"] = newCode;
 
@@ -126,7 +94,7 @@ public static class LuaObfuscator
 
             using (var obfFile = new StreamWriter(entry))
             {
-                obfFile.WriteLine("local loading = load or loadstring\nloading(\"" + obfCode + "\")()");
+                obfFile.WriteLine("(load or loadstring)(\"" + obfCode + "\")()");
             }
 
             completedFiles++;
@@ -145,21 +113,6 @@ public static class LuaObfuscator
         Console.WriteLine("Press any key to exit...");
         Console.ReadKey();
         Environment.Exit(0);
-    }
-
-    private static bool Replace(ref string str, string from, string to)
-    {
-        var startIdx = str.IndexOf(from);
-        if (startIdx == -1)
-            return false;
-
-        str = str.Remove(startIdx, from.Length).Insert(startIdx, to);
-        return true;
-    }
-
-    private static bool EndsWith(string mainStr, string toMatch)
-    {
-        return mainStr.Length >= toMatch.Length && mainStr.Substring(mainStr.Length - toMatch.Length) == toMatch;
     }
 
     private static bool IsInvalidFile(string filePath)
