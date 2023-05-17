@@ -86,7 +86,7 @@ public static class LuaObfuscator
 
             var lines = File.ReadAllLines(entry);
             var newLines = lines.Where(line => !string.IsNullOrWhiteSpace(line)).ToList();
-            var newCode = string.Join(" ", newLines.ToArray());
+            var newCode = string.Join("\n", newLines.ToArray());
 
             luaState["codeTable"] = newCode;
 
