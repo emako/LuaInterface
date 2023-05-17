@@ -8,6 +8,9 @@
     <LangVersion>11.0</LangVersion>
     <StartupObject>LuaObfuscator.LuaObfuscator</StartupObject>
     <ApplicationIcon>Favicon.ico</ApplicationIcon>
+    <AssemblyVersion>1.0.1</AssemblyVersion>
+    <FileVersion>1.0.1</FileVersion>
+    <Version>$(VersionPrefix)1.0.1</Version>
   </PropertyGroup>
 
   <ItemGroup>
